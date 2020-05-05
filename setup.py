@@ -19,7 +19,7 @@ setup(
     maintainer_email='yuk.hik.future@gmail.com',
     license='MIT',
     url='https://github.com/yukihiko-shinoda/pytest-resource-path',
-    description='Provides path for uniform access to test resources',
+    description='Provides path for uniform access to test resources in isolated directory',
     long_description=read('README.md'),
     long_description_content_type="text/markdown",
     packages=find_packages(exclude=("tests*",)),

@@ -1,5 +1,5 @@
 site_name: pytest-resource-path
-site_description: Provides path for uniform access to test resources
+site_description: Provides path for uniform access to test resources in isolated directory
 site_author: Yukihiko Shinoda
 
 theme: readthedocs
