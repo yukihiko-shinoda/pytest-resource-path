@@ -13,6 +13,8 @@ pytest-cov = "*"
 radon = "*"
 twine = "*"
 tox = "*"
+# Hotfix for Pipenv's Bug @see https://github.com/pypa/pipenv/issues/4101
+colorama = "*"
 
 [packages]
 
