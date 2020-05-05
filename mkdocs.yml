@@ -1,0 +1,10 @@
+site_name: pytest-resource-path
+site_description: Provides path for uniform access to test resources
+site_author: Yukihiko Shinoda
+
+theme: readthedocs
+
+repo_url: https://github.com/yukihiko-shinoda/pytest-resource-path
+
+pages:
+- Home: index.md
