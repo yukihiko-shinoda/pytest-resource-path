@@ -8,7 +8,6 @@ flake8 = "*"
 mypy = "*"
 pipenv-setup = "*"
 pylint = "*"
-pytest = "*"
 pytest-cov = "*"
 radon = "*"
 twine = "*"
@@ -17,6 +16,8 @@ tox = "*"
 colorama = "*"
 
 [packages]
+# The lower limit is based on the template created with Cookiecutter
+pytest = ">=3.5.0"
 
 [scripts]
 rebuild = "sh -c 'rm -rf pytest_resource_path.egg-info/* build/* dist/*'"

@@ -12,7 +12,7 @@ This [pytest] plugin was generated with [Cookiecutter] along with [@hackebrot]'s
 
 ## Features
 
-Let's isolate test resources from test code.
+### Let's isolate test resources from test code
 
 The test which use test resource is not so many.
 If we place test resource with test code, these resources will fill the display area of explorer. Wouldn't it be more productive if the files or directories which is not related with almost tests wasn't usually displayed?
@@ -71,13 +71,52 @@ def test_method(resource_path):
 
 Note that the class name is not used in the path since It felt redundant in design.
 
+### Get path to test resources root directory
+
+You can use fixture `resource_path_root` which is pathlib.Path instance (**absolte path**) pointing to `testresources`.
+
+```python
+def test_method(resource_path_root):
+    text_test_resource = (resource_path_root / 'test_resource.txt').get_text()
+```
+
+```bash
+tests/
++-- some_test_package/
+|   +-- some_test_module.py
++-- testresources/
+    +-- test_resource.txt
+```
+
+This fixture may be your help duaring migration period of directory structure.
+Or, may be usiful to preapare common directory with some of tests.
+
+```python
+def test_method(resource_path_root):
+    text_test_resource = (resource_path_root / 'common/test_resource.txt').get_text()
+```
+
+```bash
+tests/
++-- some_test_package/
+|   +-- some_test_module.py
++-- testresources/
+    +-- common/
+        +-- test_resource.txt
+```
+
 ### How to customize directory names
 
 To traverse directory structure, this plugin requires to fix directory names.
-By default, 
-root directory of test requires to be named `tests`,
-root directory of test resources requires to be named `testresources`.
-You can customize these directory names by `pytest.ini`
+
+By default:
+
+directory|requires to be named
+---|---
+Root directory of tests|`tests`
+Root directory of test resources|`testresources`
+
+You can customize these required names by `pytest.ini`
 
 Ex:
 

@@ -13,6 +13,7 @@ class TestInit:
         # fnmatch_lines does an assertion internally
         result.stdout.fnmatch_lines([
             '*::test_resource_path PASSED*',
+            '*::test_resource_path_root PASSED*',
         ])
 
         # make sure that that we get a '0' exit code for the testsuite
@@ -32,6 +33,7 @@ class TestInit:
         # fnmatch_lines does an assertion internally
         result.stdout.fnmatch_lines([
             '*::test_resource_path_ini PASSED*',
+            '*::test_resource_path_root_ini PASSED*',
         ])
 
         # make sure that that we get a '0' exit code for the testsuite
