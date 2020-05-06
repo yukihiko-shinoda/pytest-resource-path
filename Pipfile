@@ -12,12 +12,12 @@ pytest-cov = "*"
 radon = "*"
 twine = "*"
 tox = "*"
-# Hotfix for Pipenv's Bug @see https://github.com/pypa/pipenv/issues/4101
-colorama = "*"
 
 [packages]
 # The lower limit is based on the template created with Cookiecutter
 pytest = ">=3.5.0"
+# Hotfix for Pipenv's Bug @see https://github.com/pypa/pipenv/issues/4101
+colorama = "*"
 
 [scripts]
 rebuild = "sh -c 'rm -rf pytest_resource_path.egg-info/* build/* dist/*'"
