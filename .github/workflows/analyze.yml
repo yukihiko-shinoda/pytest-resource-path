@@ -12,9 +12,10 @@ jobs:
           python-version: '3.8'
       - run: python -m pip install pipenv
       - run: python -m pipenv install --skip-lock --dev
+      - run: python -m pipenv run coverage
       # paambaati/codeclimate-action doesn't support major version tag.
       - uses: paambaati/codeclimate-action@v2.6.0
         env:
           CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
         with:
-          coverageCommand: python -m pipenv run coverage
+          coverageCommand: python -m pipenv run coverage xml
