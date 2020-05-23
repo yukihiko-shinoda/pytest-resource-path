@@ -7,12 +7,14 @@ verify_ssl = true
 flake8 = "*"
 mypy = "*"
 pipenv-setup = "*"
+# Since pytester still use pathlib2 when Python version 3.5
+pathlib2 = "*"
 pylint = "*"
 pytest-cov = "*"
 radon = "*"
-twine = "*"
 tox = "*"
-pathlib2 = "*"
+wheel = "==0.34.2"
+pytest-resource-path = {editable = true,path = "."}
 
 [packages]
 # The lower limit is based on the template created with Cookiecutter
@@ -21,11 +23,10 @@ pytest = ">=3.5.0"
 colorama = "*"
 
 [scripts]
-rebuild = "sh -c 'rm -rf pytest_resource_path.egg-info/* build/* dist/*'"
-test = "sh -c 'rm -rf pytest_resource_path.egg-info/* build/* dist/* && python setup.py sdist && pytest tests'"
+test = "pytest tests"
 tox = "tox"
-coverage = "sh -c 'rm -rf pytest_resource_path.egg-info/* build/* dist/* && python setup.py sdist && pytest --verbose --cov=pytest_resource_path --cov-report=term-missing tests'"
-coverage_xml = "sh -c 'rm -rf pytest_resource_path.egg-info/* build/* dist/* && python setup.py sdist && pytest --cov-report xml --cov=pytest_resource_path tests'"
+coverage = "pytest --verbose --cov=pytest_resource_path --cov-report=term-missing tests"
+coverage_xml = "pytest --cov-report xml --cov=pytest_resource_path tests"
 flake8 = "flake8 --max-line-length=120 --statistics --show-source --radon-show-closures ."
 cc = "radon cc --show-complexity --min B ."
 mi = "radon mi --show ."

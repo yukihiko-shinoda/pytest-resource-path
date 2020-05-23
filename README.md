@@ -3,6 +3,7 @@
 [![Test](https://github.com/yukihiko-shinoda/pytest-resource-path/workflows/Test/badge.svg)](https://github.com/yukihiko-shinoda/pytest-resource-path/actions?query=workflow%3ATest)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/a5160a2616238bad3349/test_coverage)](https://codeclimate.com/github/yukihiko-shinoda/pytest-resource-path/test_coverage)
 [![Maintainability](https://api.codeclimate.com/v1/badges/a5160a2616238bad3349/maintainability)](https://codeclimate.com/github/yukihiko-shinoda/pytest-resource-path/maintainability)
+[![Updates](https://pyup.io/repos/github/yukihiko-shinoda/pytest-resource-path/shield.svg)](https://pyup.io/repos/github/yukihiko-shinoda/pytest-resource-path/)
 [![Python versions](https://img.shields.io/pypi/pyversions/pytest-resource-path.svg)](https://pypi.org/project/pytest-resource-path)
 [![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2Fyukihiko-shinoda%2Fpytest-resource-path)](http://twitter.com/share?text=pytest-resource-path&url=https://pypi.org/project/pytest-resource-path/&hashtags=python)
 
