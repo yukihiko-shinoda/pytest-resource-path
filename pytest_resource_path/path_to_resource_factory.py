@@ -36,20 +36,20 @@ class PathToResourceFactory:
 
     def _create_absolute_path_tests(self, item: Union[MethodType, FunctionType]) -> Path:
         """This method creates and returns path as same as file name."""
-        path = Path(self._create_string_absolute_path(item)).resolve(True)
-        index: Optional[int] = None
-        index_tests: Optional[int] = None
+        path = Path(self._create_string_absolute_path(item)).resolve()
+        index = None
+        index_tests = None
         string_path_tests = str(self.path_tests)
         for index, part in enumerate(path.parts):
             if part == string_path_tests:
                 index_tests = index
         if index is None or index_tests is None:
             raise LogicError(  # pragma: no cover
-                f'Unexpected path.\n'
-                f'path = {path},\n'
-                f'string_path_tests = {string_path_tests},\n'
-                f'index_tests, {index_tests},\n'
-                f'index = {index}'
+                'Unexpected path.\n'
+                'path = ' + str(path) + ',\n'
+                'string_path_tests = ' + string_path_tests + ',\n'
+                'index_tests, ' + str(index_tests) + ',\n'
+                'index = ' + str(index)
             )
         return path.parents[index - index_tests - 1]
 
