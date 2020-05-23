@@ -1,4 +1,9 @@
 """Tests for path_to_resource_factory.py"""
+import sys
+if sys.version_info.major == 3 and sys.version_info.minor <= 5:  # pragma: nocover
+    import pathlib2
+else:  # pragma: nocover
+    import pathlib
 from pathlib import Path
 
 from pytest_resource_path import PathToResourceFactory
@@ -16,8 +21,8 @@ class TestPathToResourceFactory:
         function = self.get_function(file_name_pytest, testdir_structure)
         path = PathToResourceFactory().create(function)
         assert path == Path(
-            f'{testdir_structure.tmpdir}/tests/testresources/test_package/{file_name_pytest}/test_function_something'
-        )
+            str(testdir_structure.tmpdir)
+        ) / 'tests/testresources/test_package' / file_name_pytest / 'test_function_something'
 
     def test_create_path_to_resource_root(self, testdir_structure):
         # noinspection LongLine
@@ -29,7 +34,7 @@ class TestPathToResourceFactory:
         file_name_pytest = 'test_module_something'
         function = self.get_function(file_name_pytest, testdir_structure)
         path = PathToResourceFactory().create_path_to_resource_root(function)
-        assert path == Path(f'{testdir_structure.tmpdir}/tests/testresources')
+        assert path == Path(str(testdir_structure.tmpdir) + '/tests/testresources')
 
     def test_create_absolute_path_tests(self, testdir_structure):
         file_name_pytest = 'test_module_something'
@@ -50,7 +55,7 @@ class TestPathToResourceFactory:
         function = self.get_function(file_name_pytest, testdir_structure)
         # noinspection PyProtectedMember
         path = PathToResourceFactory()._create_path_as_same_as_file_name(function)
-        assert path == Path(testdir_structure.tmpdir) / f'tests/test_package/{file_name_pytest}'
+        assert path == Path(str(testdir_structure.tmpdir)) / 'tests/test_package' / file_name_pytest
 
     def test_run_test_in_sub_directory(self, testdir_structure):
         result = testdir_structure.runpytest('-v')
@@ -64,7 +69,11 @@ class TestPathToResourceFactory:
         assert result.ret == 0
 
     @staticmethod
-    def get_function(file_name_pytest, testdir_structure):
-        modulecol = testdir_structure.getmodulecol(Path(f'tests/test_package/{file_name_pytest}.py'))
+    def get_function(file_name_pytest: str, testdir_structure):
+        if sys.version_info.major == 3 and sys.version_info.minor <= 5:  # pragma: nocover
+            path = pathlib2.Path('tests/test_package/' + file_name_pytest + '.py')
+        else:  # pragma: nocover
+            path = pathlib.Path('tests/test_package/' + file_name_pytest + '.py')
+        modulecol = testdir_structure.getmodulecol(path)
         (item,) = testdir_structure.genitems([modulecol])
         return item.obj

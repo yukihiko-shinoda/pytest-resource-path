@@ -12,6 +12,7 @@ pytest-cov = "*"
 radon = "*"
 twine = "*"
 tox = "*"
+pathlib2 = "*"
 
 [packages]
 # The lower limit is based on the template created with Cookiecutter

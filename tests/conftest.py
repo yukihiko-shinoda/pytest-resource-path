@@ -40,6 +40,6 @@ def create_directory_structure(testdir, file_name: str, directory_name_tests: st
     testdir.mkpydir('test_package')
     testdir.tmpdir = tmpdir_default
     testdir.makepyfile(
-        **{f'{directory_name_tests}/test_package/test_module_something': (
-                Path(__file__).parent / f'testresources/{file_name}').read_text()})
+        **{directory_name_tests + '/test_package/test_module_something': (
+                Path(__file__).parent / 'testresources' / file_name).read_text()})
     yield testdir
