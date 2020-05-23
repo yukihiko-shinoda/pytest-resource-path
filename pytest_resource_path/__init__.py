@@ -5,20 +5,20 @@ import pytest
 
 from pytest_resource_path.path_to_resource_factory import PathToResourceFactory
 
-INI_KEY_DIRECTORY_NAME_TESTS = 'resource-path.directory-name-tests'
-INI_KEY_DIRECTORY_NAME_TEST_RESOURCES = 'resource-path.directory-name-test-resources'
+INI_KEY_DIRECTORY_NAME_TESTS = "resource-path.directory-name-tests"
+INI_KEY_DIRECTORY_NAME_TEST_RESOURCES = "resource-path.directory-name-test-resources"
 
 
 def pytest_addoption(parser):
     parser.addini(
         INI_KEY_DIRECTORY_NAME_TESTS,
-        'Directory name for tests',
-        default=PathToResourceFactory.DIRECTORY_NAME_TESTS_DEAFAULT
+        "Directory name for tests",
+        default=PathToResourceFactory.DIRECTORY_NAME_TESTS_DEAFAULT,
     )
     parser.addini(
         INI_KEY_DIRECTORY_NAME_TEST_RESOURCES,
-        'Directory name for test resources',
-        default=PathToResourceFactory.DIRECTORY_NAME_TEST_RESOURCES_DEFAULT
+        "Directory name for test resources",
+        default=PathToResourceFactory.DIRECTORY_NAME_TEST_RESOURCES_DEFAULT,
     )
 
 

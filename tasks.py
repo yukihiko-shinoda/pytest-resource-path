@@ -3,14 +3,13 @@ Tasks for maintaining the project.
 
 Execute 'invoke --list' for guidance on using Invoke
 """
-import shutil
 import platform
-from pathlib import Path
+import shutil
 import webbrowser
+from pathlib import Path
 
 from invoke import task  # type: ignore
 from invoke.runners import Failure  # type: ignore
-
 
 ROOT_DIR = Path(__file__).parent
 SETUP_FILE = ROOT_DIR.joinpath("setup.py")
@@ -45,17 +44,13 @@ def style(context, check=False):
     list_result = []
     # Run isort
     isort_options = "--recursive {}".format("--check-only --diff" if check else "")
-    list_result.append(
-        context.run("isort {} {}".format(isort_options, python_dirs_string), warn=True)
-    )
+    list_result.append(context.run("isort {} {}".format(isort_options, python_dirs_string), warn=True))
     # Run pipenv-setup
     isort_options = "{}".format("check --strict" if check else "sync --pipfile")
     list_result.append(context.run("pipenv-setup {}".format(isort_options), warn=True))
     # Run black
     black_options = "{}".format("--check --diff" if check else "")
-    list_result.append(
-        context.run("black {} {}".format(black_options, python_dirs_string), warn=True)
-    )
+    list_result.append(context.run("black {} {}".format(black_options, python_dirs_string), warn=True))
     for result in list_result:
         if result.failed:
             raise Failure(result)
@@ -101,10 +96,7 @@ def test(context):
     context.run("python {} test".format(SETUP_FILE), pty=pty)
 
 
-@task(help={
-    'publish': "Publish the result via coveralls",
-    'xml': "Export report as xml format",
-})
+@task(help={"publish": "Publish the result via coveralls", "xml": "Export report as xml format"})
 def coverage(context, publish=False, xml=False):
     """
     Create coverage report

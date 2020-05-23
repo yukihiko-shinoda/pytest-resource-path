@@ -6,6 +6,7 @@ verify_ssl = true
 [dev-packages]
 coverage = "*"
 invoke = "*"
+isort = "*"
 flake8 = "*"
 mypy = "*"
 pipenv-setup = "*"

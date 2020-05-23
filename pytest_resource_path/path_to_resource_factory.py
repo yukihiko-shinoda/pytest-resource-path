@@ -1,20 +1,20 @@
 import sys
 from os.path import splitext
 from pathlib import Path
-from types import MethodType, FunctionType
+from types import FunctionType, MethodType
 from typing import Optional, Union
 
 from pytest_resource_path.exceptions import LogicError
 
 
 class PathToResourceFactory:
-    DIRECTORY_NAME_TESTS_DEAFAULT = 'tests'
-    DIRECTORY_NAME_TEST_RESOURCES_DEFAULT = 'testresources'
+    DIRECTORY_NAME_TESTS_DEAFAULT = "tests"
+    DIRECTORY_NAME_TEST_RESOURCES_DEFAULT = "testresources"
     """This class implements uniform access to test resources."""
+
     def __init__(self, path_tests: Path = None, path_test_resources: Optional[Path] = None):
         self.path_tests = self._init_path(path_tests, self.DIRECTORY_NAME_TESTS_DEAFAULT)
-        self.path_test_resources = self._init_path(
-            path_test_resources, self.DIRECTORY_NAME_TEST_RESOURCES_DEFAULT)
+        self.path_test_resources = self._init_path(path_test_resources, self.DIRECTORY_NAME_TEST_RESOURCES_DEFAULT)
 
     @staticmethod
     def _init_path(path_test_resources: Optional[Path], default) -> Path:
@@ -25,8 +25,11 @@ class PathToResourceFactory:
         absolute_path_tests = self._create_absolute_path_tests(item)
         path_to_resource_root = self._create_path_to_resource_root(absolute_path_tests)
         path_as_same_as_file_name = self._create_path_as_same_as_file_name(item)
-        return path_to_resource_root / path_as_same_as_file_name.relative_to(
-            self._create_absolute_path_tests(item)) / item.__name__
+        return (
+            path_to_resource_root
+            / path_as_same_as_file_name.relative_to(self._create_absolute_path_tests(item))
+            / item.__name__
+        )
 
     def create_path_to_resource_root(self, item: Union[MethodType, FunctionType]) -> Path:
         return self._create_path_to_resource_root(self._create_absolute_path_tests(item))
@@ -45,11 +48,11 @@ class PathToResourceFactory:
                 index_tests = index
         if index is None or index_tests is None:
             raise LogicError(  # pragma: no cover
-                'Unexpected path.\n'
-                'path = ' + str(path) + ',\n'
-                'string_path_tests = ' + string_path_tests + ',\n'
-                'index_tests, ' + str(index_tests) + ',\n'
-                'index = ' + str(index)
+                "Unexpected path.\n"
+                "path = " + str(path) + ",\n"
+                "string_path_tests = " + string_path_tests + ",\n"
+                "index_tests, " + str(index_tests) + ",\n"
+                "index = " + str(index)
             )
         return path.parents[index - index_tests - 1]
 
