@@ -1,7 +1,7 @@
 """Tests for path_to_resource_factory.py"""
 import sys
 if sys.version_info.major == 3 and sys.version_info.minor <= 5:  # pragma: nocover
-    import pathlib2
+    import pathlib2  # type: ignore
 else:  # pragma: nocover
     import pathlib
 from pathlib import Path

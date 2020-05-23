@@ -24,13 +24,15 @@ def pytest_addoption(parser):
 
 @pytest.fixture
 def resource_path(request):
-    path_tests = Path(request.config.getini(INI_KEY_DIRECTORY_NAME_TESTS))
-    path_test_resources = Path(request.config.getini(INI_KEY_DIRECTORY_NAME_TEST_RESOURCES))
-    yield PathToResourceFactory(path_tests, path_test_resources).create(request.function)
+    yield create_path_to_resource_factory(request).create(request.function)
 
 
 @pytest.fixture
 def resource_path_root(request):
+    yield create_path_to_resource_factory(request).create_path_to_resource_root(request.function)
+
+
+def create_path_to_resource_factory(request):
     path_tests = Path(request.config.getini(INI_KEY_DIRECTORY_NAME_TESTS))
     path_test_resources = Path(request.config.getini(INI_KEY_DIRECTORY_NAME_TEST_RESOURCES))
-    yield PathToResourceFactory(path_tests, path_test_resources).create_path_to_resource_root(request.function)
+    return PathToResourceFactory(path_tests, path_test_resources)
