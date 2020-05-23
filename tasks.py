@@ -3,13 +3,12 @@ Tasks for maintaining the project.
 
 Execute 'invoke --list' for guidance on using Invoke
 """
-import platform
 import shutil
 import webbrowser
 from pathlib import Path
 
 from invoke import task  # type: ignore
-from invoke.runners import Failure  # type: ignore
+from invoke.runners import Failure, Result  # type: ignore
 
 ROOT_DIR = Path(__file__).parent
 SETUP_FILE = ROOT_DIR.joinpath("setup.py")
@@ -40,20 +39,24 @@ def style(context, check=False):
     """
     Format code
     """
-    python_dirs_string = " ".join(PYTHON_DIRS)
-    list_result = []
-    # Run isort
-    isort_options = "--recursive {}".format("--check-only --diff" if check else "")
-    list_result.append(context.run("isort {} {}".format(isort_options, python_dirs_string), warn=True))
-    # Run pipenv-setup
-    isort_options = "{}".format("check --strict" if check else "sync --pipfile")
-    list_result.append(context.run("pipenv-setup {}".format(isort_options), warn=True))
-    # Run black
-    black_options = "{}".format("--check --diff" if check else "")
-    list_result.append(context.run("black {} {}".format(black_options, python_dirs_string), warn=True))
-    for result in list_result:
+    for result in [isort(context, check), pipenv_setup(context, check), black(context, check)]:
         if result.failed:
             raise Failure(result)
+
+
+def isort(context, check=False) -> Result:
+    isort_options = "--recursive {}".format("--check-only --diff" if check else "")
+    return context.run("isort {} {}".format(isort_options, " ".join(PYTHON_DIRS)), warn=True)
+
+
+def pipenv_setup(context, check=False) -> Result:
+    isort_options = "{}".format("check --strict" if check else "sync --pipfile")
+    return context.run("pipenv-setup {}".format(isort_options), warn=True)
+
+
+def black(context, check=False) -> Result:
+    black_options = "{}".format("--check --diff" if check else "")
+    return context.run("black {} {}".format(black_options, " ".join(PYTHON_DIRS)), warn=True)
 
 
 @task
@@ -61,7 +64,7 @@ def lint_flake8(context):
     """
     Lint code with flake8
     """
-    context.run("flake8 {}".format(" ".join(PYTHON_DIRS)))
+    context.run("flake8 {} {}".format("--statistics --show-source --radon-show-closures", " ".join(PYTHON_DIRS)))
 
 
 @task
@@ -85,15 +88,6 @@ def lint(_context):
     """
     Run all linting
     """
-
-
-@task
-def test(context):
-    """
-    Run tests
-    """
-    pty = platform.system() == "Linux"
-    context.run("python {} test".format(SETUP_FILE), pty=pty)
 
 
 @task(help={"publish": "Publish the result via coveralls", "xml": "Export report as xml format"})
@@ -153,12 +147,3 @@ def clean(_context):
     """
     Runs all clean sub-tasks
     """
-
-
-@task(clean)
-def dist(context):
-    """
-    Build source and wheel packages
-    """
-    context.run("python setup.py sdist")
-    context.run("python setup.py bdist_wheel")

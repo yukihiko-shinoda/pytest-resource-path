@@ -26,7 +26,7 @@ setup(
     long_description_content_type="text/markdown",
     packages=find_packages(exclude=("tests*",)),
     package_data={"pytest_resource_path": ["py.typed"]},
-    python_requires=">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*",
+    python_requires=">=3.5",
     install_requires=["pytest>=3.5.0", "colorama"],
     dependency_links=[],
     classifiers=[
