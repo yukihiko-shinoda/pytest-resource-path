@@ -1,8 +1,6 @@
 # pytest-resource-path
 
 [![Test](https://github.com/yukihiko-shinoda/pytest-resource-path/workflows/Test/badge.svg)](https://github.com/yukihiko-shinoda/pytest-resource-path/actions?query=workflow%3ATest)
-[![See Build Status on Travis CI](https://travis-ci.org/yukihiko-shinoda/pytest-resource-path.svg?branch=master)](https://travis-ci.org/yukihiko-shinoda/pytest-resource-path)
-[![See Build Status on AppVeyor](https://ci.appveyor.com/api/projects/status/github/yukihiko-shinoda/pytest-resource-path?branch=master)](https://ci.appveyor.com/project/yukihiko-shinoda/pytest-resource-path/branch/master)
 [![codecov](https://codecov.io/gh/yukihiko-shinoda/pytest-resource-path/branch/master/graph/badge.svg)](https://codecov.io/gh/yukihiko-shinoda/pytest-resource-path)
 [![Python versions](https://img.shields.io/pypi/pyversions/pytest-resource-path.svg)](https://pypi.org/project/pytest-resource-path)
 [![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2Fyukihiko-shinoda%2Fpytest-resource-path)](http://twitter.com/share?text=pytest-resource-path&url=https://pypi.org/project/pytest-resource-path/&hashtags=python)
