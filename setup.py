@@ -2,7 +2,7 @@
 import io
 import os
 
-from setuptools import find_packages, setup
+from setuptools import find_packages, setup  # type: ignore
 
 
 def read(fname):

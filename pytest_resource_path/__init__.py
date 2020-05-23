@@ -1,6 +1,6 @@
 from pathlib import Path
 
-import pytest
+import pytest  # type: ignore
 
 from pytest_resource_path.path_to_resource_factory import PathToResourceFactory
 
