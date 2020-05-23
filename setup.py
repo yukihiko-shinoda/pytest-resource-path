@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+"""Implements setup configuration."""
 import io
 import os
 
@@ -6,6 +7,7 @@ from setuptools import find_packages, setup  # type: ignore
 
 
 def read(fname):
+    """Reads file content."""
     file_path = os.path.join(os.path.dirname(__file__), fname)
     return io.open(file_path, encoding="utf-8").read()
 

@@ -1,3 +1,4 @@
+"""Implements fixtures to get path to resource."""
 from pathlib import Path
 
 import pytest  # type: ignore
@@ -9,6 +10,7 @@ INI_KEY_DIRECTORY_NAME_TEST_RESOURCES = "resource-path.directory-name-test-resou
 
 
 def pytest_addoption(parser):
+    """Adds options for pytest-resource-path."""
     parser.addini(
         INI_KEY_DIRECTORY_NAME_TESTS,
         "Directory name for tests",
@@ -23,15 +25,18 @@ def pytest_addoption(parser):
 
 @pytest.fixture
 def resource_path(request):
+    """Fixture to get path to resource."""
     yield create_path_to_resource_factory(request).create(request.function)
 
 
 @pytest.fixture
 def resource_path_root(request):
+    """Fixture to get path to resource root."""
     yield create_path_to_resource_factory(request).create_path_to_resource_root(request.function)
 
 
 def create_path_to_resource_factory(request):
+    """Creates PathToResourceFactory."""
     path_tests = Path(request.config.getini(INI_KEY_DIRECTORY_NAME_TESTS))
     path_test_resources = Path(request.config.getini(INI_KEY_DIRECTORY_NAME_TEST_RESOURCES))
     return PathToResourceFactory(path_tests, path_test_resources)

@@ -5,12 +5,13 @@ from pathlib import Path
 from pytest_resource_path import PathToResourceFactory
 
 if sys.version_info.major == 3 and sys.version_info.minor <= 5:  # pragma: nocover
-    import pathlib2  # type: ignore
+    import pathlib2  # type: ignore # pylint: disable=import-error
 else:  # pragma: nocover
     import pathlib
 
 
 class TestPathToResourceFactory:
+    """Tests for path_to_resource_factory.py"""
     def test_create(self, testdir_structure):
         # noinspection LongLine
         # pylint:disable=line-too-long
@@ -42,6 +43,7 @@ class TestPathToResourceFactory:
         assert path == Path(str(testdir_structure.tmpdir) + "/tests/testresources")
 
     def test_create_absolute_path_tests(self, testdir_structure):
+        """Method create_absolute_path() should return absolute path."""
         file_name_pytest = "test_module_something"
         function = self.get_function(file_name_pytest, testdir_structure)
         # noinspection PyProtectedMember
@@ -62,7 +64,9 @@ class TestPathToResourceFactory:
         path = PathToResourceFactory()._create_path_as_same_as_file_name(function)
         assert path == Path(str(testdir_structure.tmpdir)) / "tests/test_package" / file_name_pytest
 
-    def test_run_test_in_sub_directory(self, testdir_structure):
+    @staticmethod
+    def test_run_test_in_sub_directory(testdir_structure):
+        """pytest in sub directory in temporary directory should work well."""
         result = testdir_structure.runpytest("-v")
 
         # fnmatch_lines does an assertion internally
@@ -73,6 +77,7 @@ class TestPathToResourceFactory:
 
     @staticmethod
     def get_function(file_name_pytest: str, testdir_structure):
+        """Gets function object."""
         if sys.version_info.major == 3 and sys.version_info.minor <= 5:  # pragma: nocover
             path = pathlib2.Path("tests/test_package/" + file_name_pytest + ".py")
         else:  # pragma: nocover

@@ -3,4 +3,4 @@
 
 def test_function_something():
     """This test is run in test_dir on pytest for test pytest FixtureRequest."""
-    assert 1 == 1
+    assert 1 + 1 == 2

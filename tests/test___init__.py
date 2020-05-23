@@ -1,11 +1,12 @@
+"""Tests for __init__.py."""
 
 
 class TestInit:
-    """Tests for File."""
+    """Tests for __init__.py."""
 
     @staticmethod
     def test_fixture(testdir_structure_for_testing_resource_path):
-        """Make sure that pytest accepts our fixture."""
+        """Fixture should be expected path."""
 
         # run pytest
         result = testdir_structure_for_testing_resource_path.runpytest("-v")
@@ -22,6 +23,7 @@ class TestInit:
 
     @staticmethod
     def test_fixture_with_ini(testdir_structure_for_testing_ini):
+        """Fixture should be expected path with pytest.ini."""
         testdir_structure_for_testing_ini.makeini(
             """
             [pytest]

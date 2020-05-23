@@ -1,3 +1,4 @@
+"""Implements factory for path to resource."""
 import sys
 from os.path import splitext
 from pathlib import Path
@@ -8,6 +9,7 @@ from pytest_resource_path.exceptions import LogicError
 
 
 class PathToResourceFactory:
+    """Implements factory fot path to resource."""
     DIRECTORY_NAME_TESTS_DEAFAULT = "tests"
     DIRECTORY_NAME_TEST_RESOURCES_DEFAULT = "testresources"
     """This class implements uniform access to test resources."""
@@ -32,6 +34,7 @@ class PathToResourceFactory:
         )
 
     def create_path_to_resource_root(self, item: Union[MethodType, FunctionType]) -> Path:
+        """Creates path to resource root."""
         return self._create_path_to_resource_root(self._create_absolute_path_tests(item))
 
     def _create_path_to_resource_root(self, absolute_path_tests: Path) -> Path:

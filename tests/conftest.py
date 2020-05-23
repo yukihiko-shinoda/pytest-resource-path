@@ -1,8 +1,9 @@
+"""Implements config for pytest."""
 from pathlib import Path
 
 import pytest  # type: ignore
 
-pytest_plugins = "pytester"
+pytest_plugins = "pytester"  # pylint: disable=invalid-name
 
 
 @pytest.fixture
@@ -33,6 +34,7 @@ def testdir_structure_for_testing_ini(testdir):
 
 
 def create_directory_structure(testdir, file_name: str, directory_name_tests: str = "tests"):
+    """Creates directory structure."""
     testdir.makepyfile(__init__="")
     directory_tests = testdir.mkpydir(directory_name_tests)
     tmpdir_default = testdir.tmpdir
