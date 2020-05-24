@@ -9,3 +9,9 @@ line_length = 120
 # @see https://black.readthedocs.io/en/stable/pyproject_toml.html#configuration-format
 [tool.black]
 line-length = 120
+
+[tool.pylint.format]
+max-line-length = 120
+
+[tool.pylint.design]
+min-public-methods="1"
