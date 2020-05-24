@@ -14,7 +14,7 @@ def read(fname):
 
 setup(
     name="pytest-resource-path",
-    version="1.0.0",
+    version="1.1.0",
     author="Yukihiko Shinoda",
     author_email="yuk.hik.future@gmail.com",
     maintainer="Yukihiko Shinoda",
