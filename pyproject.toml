@@ -11,7 +11,9 @@ line_length = 120
 line-length = 120
 
 [tool.pylint.format]
-max-line-length = 120
+max-line-length = "120"
 
 [tool.pylint.design]
-min-public-methods="1"
+# Since this is against "Single Responsibility Principle".
+# @see https://stackoverflow.com/questions/28722314/why-does-pylint-want-2-public-methods-per-class
+min-public-methods = "1"
