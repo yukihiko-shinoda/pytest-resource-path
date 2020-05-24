@@ -45,16 +45,19 @@ def style(context, check=False):
 
 
 def isort(context, check=False) -> Result:
+    """Runs isort."""
     isort_options = "--recursive {}".format("--check-only --diff" if check else "")
     return context.run("isort {} {}".format(isort_options, " ".join(PYTHON_DIRS)), warn=True)
 
 
 def pipenv_setup(context, check=False) -> Result:
+    """Runs pipenv-setup."""
     isort_options = "{}".format("check --strict" if check else "sync --pipfile")
     return context.run("pipenv-setup {}".format(isort_options), warn=True)
 
 
 def black(context, check=False) -> Result:
+    """Runs black."""
     black_options = "{}".format("--check --diff" if check else "")
     return context.run("black {} {}".format(black_options, " ".join(PYTHON_DIRS)), warn=True)
 
