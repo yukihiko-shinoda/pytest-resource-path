@@ -1,11 +1,13 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
+"""Implements setup configuration."""
 import io
 import os
-from setuptools import setup, find_packages
+
+from setuptools import find_packages, setup  # type: ignore
 
 
 def read(fname):
+    """Reads file content."""
     file_path = os.path.join(os.path.dirname(__file__), fname)
     return io.open(file_path, encoding="utf-8").read()
 
@@ -24,7 +26,7 @@ setup(
     long_description_content_type="text/markdown",
     packages=find_packages(exclude=("tests*",)),
     package_data={"pytest_resource_path": ["py.typed"]},
-    python_requires=">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*",
+    python_requires=">=3.5",
     install_requires=["pytest>=3.5.0", "colorama"],
     dependency_links=[],
     classifiers=[

@@ -1,40 +1,46 @@
-# -*- coding: utf-8 -*-
+"""Tests for __init__.py."""
 
 
 class TestInit:
-    """Tests for File."""
+    """Tests for __init__.py."""
+
     @staticmethod
     def test_fixture(testdir_structure_for_testing_resource_path):
-        """Make sure that pytest accepts our fixture."""
+        """Fixture should be expected path."""
 
         # run pytest
-        result = testdir_structure_for_testing_resource_path.runpytest('-v')
+        result = testdir_structure_for_testing_resource_path.runpytest("-v")
 
         # fnmatch_lines does an assertion internally
-        result.stdout.fnmatch_lines([
-            '*::test_resource_path PASSED*',
-            '*::test_resource_path_root PASSED*',
-        ])
+        lines = [
+            "*::test_resource_path PASSED*",
+            "*::test_resource_path_root PASSED*",
+        ]
+        result.stdout.fnmatch_lines(lines)
 
         # make sure that that we get a '0' exit code for the testsuite
         assert result.ret == 0
 
     @staticmethod
     def test_fixture_with_ini(testdir_structure_for_testing_ini):
-        testdir_structure_for_testing_ini.makeini("""
+        """Fixture should be expected path with pytest.ini."""
+        testdir_structure_for_testing_ini.makeini(
+            """
             [pytest]
             resource-path.directory-name-tests = integrationtests
             resource-path.directory-name-test-resources = data
-        """)
+        """
+        )
 
         # run pytest
-        result = testdir_structure_for_testing_ini.runpytest('-v')
+        result = testdir_structure_for_testing_ini.runpytest("-v")
 
         # fnmatch_lines does an assertion internally
-        result.stdout.fnmatch_lines([
-            '*::test_resource_path_ini PASSED*',
-            '*::test_resource_path_root_ini PASSED*',
-        ])
+        lines = [
+            "*::test_resource_path_ini PASSED*",
+            "*::test_resource_path_root_ini PASSED*",
+        ]
+        result.stdout.fnmatch_lines(lines)
 
         # make sure that that we get a '0' exit code for the testsuite
         assert result.ret == 0

@@ -12,7 +12,6 @@ jobs:
           python-version: '3.8'
       - run: python -m pip install pipenv
       - run: python -m pipenv install --skip-lock --dev
-      - run: python -m pipenv run clear
       - run: python -m pipenv run build
       - uses: pypa/gh-action-pypi-publish@v1.1.0
         with:
