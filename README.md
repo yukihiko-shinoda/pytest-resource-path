@@ -11,8 +11,6 @@
 
 Provides path for uniform access to test resources in isolated directory
 
-This [pytest] plugin was generated with [Cookiecutter] along with [@hackebrot]'s [cookiecutter-pytest-plugin] template.
-
 ## Features
 
 ### Let's isolate test resources from test code
@@ -152,6 +150,10 @@ Distributed under the terms of the [MIT] license, "pytest-resource-path" is free
 ## Issues
 
 If you encounter any problems, please [file an issue] along with a detailed description.
+
+## Credits
+
+This [pytest] plugin was generated with [Cookiecutter] along with [@hackebrot]'s [cookiecutter-pytest-plugin] template.
 
 [Cookiecutter]: https://github.com/audreyr/cookiecutter
 [@hackebrot]: https://github.com/hackebrot
