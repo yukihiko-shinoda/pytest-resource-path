@@ -3,13 +3,13 @@
 [![Test](https://github.com/yukihiko-shinoda/pytest-resource-path/workflows/Test/badge.svg)](https://github.com/yukihiko-shinoda/pytest-resource-path/actions?query=workflow%3ATest)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/a5160a2616238bad3349/test_coverage)](https://codeclimate.com/github/yukihiko-shinoda/pytest-resource-path/test_coverage)
 [![Maintainability](https://api.codeclimate.com/v1/badges/a5160a2616238bad3349/maintainability)](https://codeclimate.com/github/yukihiko-shinoda/pytest-resource-path/maintainability)
+[![Code Climate technical debt](https://img.shields.io/codeclimate/tech-debt/yukihiko-shinoda/pytest-resource-path)](https://codeclimate.com/github/yukihiko-shinoda/pytest-resource-path)
 [![Updates](https://pyup.io/repos/github/yukihiko-shinoda/pytest-resource-path/shield.svg)](https://pyup.io/repos/github/yukihiko-shinoda/pytest-resource-path/)
 [![Python versions](https://img.shields.io/pypi/pyversions/pytest-resource-path.svg)](https://pypi.org/project/pytest-resource-path)
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/pytest-resource-path)](https://pypi.org/project/pytest-resource-path)
 [![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2Fyukihiko-shinoda%2Fpytest-resource-path)](http://twitter.com/share?text=pytest-resource-path&url=https://pypi.org/project/pytest-resource-path/&hashtags=python)
 
 Provides path for uniform access to test resources in isolated directory
-
-This [pytest] plugin was generated with [Cookiecutter] along with [@hackebrot]'s [cookiecutter-pytest-plugin] template.
 
 ## Features
 
@@ -138,11 +138,6 @@ integrationtests/
         +-- some_test_module/
 ```
 
-## Contributing
-
-Contributions are very welcome. Tests can be run with [tox], please ensure
-the coverage at least stays the same before you submit a pull request.
-
 ## License
 
 Distributed under the terms of the [MIT] license, "pytest-resource-path" is free and open source software
@@ -150,6 +145,15 @@ Distributed under the terms of the [MIT] license, "pytest-resource-path" is free
 ## Issues
 
 If you encounter any problems, please [file an issue] along with a detailed description.
+
+## Contributing
+
+Contributions are very welcome. Tests can be run with [tox], please ensure
+the coverage at least stays the same before you submit a pull request.
+
+## Credits
+
+This [pytest] plugin was generated with [Cookiecutter] along with [@hackebrot]'s [cookiecutter-pytest-plugin] template.
 
 [Cookiecutter]: https://github.com/audreyr/cookiecutter
 [@hackebrot]: https://github.com/hackebrot
