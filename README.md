@@ -138,11 +138,6 @@ integrationtests/
         +-- some_test_module/
 ```
 
-## Contributing
-
-Contributions are very welcome. Tests can be run with [tox], please ensure
-the coverage at least stays the same before you submit a pull request.
-
 ## License
 
 Distributed under the terms of the [MIT] license, "pytest-resource-path" is free and open source software
@@ -150,6 +145,11 @@ Distributed under the terms of the [MIT] license, "pytest-resource-path" is free
 ## Issues
 
 If you encounter any problems, please [file an issue] along with a detailed description.
+
+## Contributing
+
+Contributions are very welcome. Tests can be run with [tox], please ensure
+the coverage at least stays the same before you submit a pull request.
 
 ## Credits
 
