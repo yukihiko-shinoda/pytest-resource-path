@@ -148,8 +148,8 @@ If you encounter any problems, please [file an issue] along with a detailed desc
 
 ## Contributing
 
-Contributions are very welcome. Tests can be run with [tox], please ensure
-the coverage at least stays the same before you submit a pull request.
+Contributions are very welcome.
+Please ensure the coverage at least stays the same before you submit a pull request.
 
 ## Credits
 
@@ -161,6 +161,5 @@ This [pytest] plugin was generated with [Cookiecutter] along with [@hackebrot]'s
 [cookiecutter-pytest-plugin]: https://github.com/pytest-dev/cookiecutter-pytest-plugin
 [file an issue]: https://github.com/yukihiko-shinoda/pytest-resource-path/issues
 [pytest]: https://github.com/pytest-dev/pytest
-[tox]: https://tox.readthedocs.io/en/latest/
 [pip]: https://pypi.org/project/pip/
 [PyPI]: https://pypi.org/project

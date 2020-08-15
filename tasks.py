@@ -3,6 +3,7 @@ Tasks for maintaining the project.
 
 Execute 'invoke --list' for guidance on using Invoke
 """
+import platform
 import shutil
 import webbrowser
 from pathlib import Path
@@ -16,7 +17,6 @@ TEST_DIR = ROOT_DIR.joinpath("tests")
 SOURCE_DIR = ROOT_DIR.joinpath("pytest_resource_path")
 SETUP_PY = ROOT_DIR.joinpath("setup.py")
 TASKS_PY = ROOT_DIR.joinpath("tasks.py")
-TOX_DIR = ROOT_DIR.joinpath(".tox")
 COVERAGE_FILE = ROOT_DIR.joinpath(".coverage")
 COVERAGE_DIR = ROOT_DIR.joinpath("htmlcov")
 COVERAGE_REPORT = COVERAGE_DIR.joinpath("index.html")
@@ -93,6 +93,46 @@ def lint(_context):
     """
 
 
+@task
+def radon_cc(context):
+    """
+    Reports code complexity.
+    """
+    context.run("radon cc {}".format(" ".join(PYTHON_DIRS)))
+
+
+@task
+def radon_mi(context):
+    """
+    Reports maintainability index.
+    """
+    context.run("radon mi {}".format(" ".join(PYTHON_DIRS)))
+
+
+@task(radon_cc, radon_mi)
+def radon(_context):
+    """
+    Reports radon.
+    """
+
+
+@task
+def xenon(context):
+    """
+    Check code complexity.
+    """
+    context.run(("xenon" " --max-absolute A" "--max-modules A" "--max-average A" "{}").format(" ".join(PYTHON_DIRS)))
+
+
+@task
+def test(context):
+    """
+    Run tests
+    """
+    pty = platform.system() == "Linux"
+    context.run("python {} test".format(SETUP_FILE), pty=pty)
+
+
 @task(help={"publish": "Publish the result via coveralls", "xml": "Export report as xml format"})
 def coverage(context, publish=False, xml=False):
     """
@@ -141,7 +181,6 @@ def clean_tests(_context):
     Clean up files from testing
     """
     _delete_file(COVERAGE_FILE)
-    shutil.rmtree(TOX_DIR, ignore_errors=True)
     shutil.rmtree(COVERAGE_DIR, ignore_errors=True)
 
 

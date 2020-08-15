@@ -5,6 +5,8 @@ import pytest  # type: ignore
 
 from pytest_resource_path.path_to_resource_factory import PathToResourceFactory
 
+__version__ = "1.1.0"
+
 INI_KEY_DIRECTORY_NAME_TESTS = "resource-path.directory-name-tests"
 INI_KEY_DIRECTORY_NAME_TEST_RESOURCES = "resource-path.directory-name-test-resources"
 
