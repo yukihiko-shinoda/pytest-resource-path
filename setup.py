@@ -16,7 +16,7 @@ setup(
     author="Yukihiko Shinoda",
     author_email="yuk.hik.future@gmail.com",
     classifiers=[
-        "Development Status :: 4 - Beta",
+        "Development Status :: 5 - Production/Stable",
         "Framework :: Pytest",
         "Intended Audience :: Developers",
         "Topic :: Software Development :: Testing",
