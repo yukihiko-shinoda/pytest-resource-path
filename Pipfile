@@ -15,7 +15,6 @@ pipenv-setup = "*"
 pylint = "*"
 pytest-resource-path = {editable = true,path = "."}
 radon = "*"
-tox = "*"
 wheel = "*"
 xenon = "*"
 

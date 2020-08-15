@@ -17,7 +17,6 @@ TEST_DIR = ROOT_DIR.joinpath("tests")
 SOURCE_DIR = ROOT_DIR.joinpath("pytest_resource_path")
 SETUP_PY = ROOT_DIR.joinpath("setup.py")
 TASKS_PY = ROOT_DIR.joinpath("tasks.py")
-TOX_DIR = ROOT_DIR.joinpath(".tox")
 COVERAGE_FILE = ROOT_DIR.joinpath(".coverage")
 COVERAGE_DIR = ROOT_DIR.joinpath("htmlcov")
 COVERAGE_REPORT = COVERAGE_DIR.joinpath("index.html")
@@ -182,7 +181,6 @@ def clean_tests(_context):
     Clean up files from testing
     """
     _delete_file(COVERAGE_FILE)
-    shutil.rmtree(TOX_DIR, ignore_errors=True)
     shutil.rmtree(COVERAGE_DIR, ignore_errors=True)
 
 
