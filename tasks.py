@@ -3,6 +3,7 @@ Tasks for maintaining the project.
 
 Execute 'invoke --list' for guidance on using Invoke
 """
+import platform
 import shutil
 import webbrowser
 from pathlib import Path
@@ -91,6 +92,46 @@ def lint(_context):
     """
     Run all linting
     """
+
+
+@task
+def radon_cc(context):
+    """
+    Reports code complexity.
+    """
+    context.run("radon cc {}".format(" ".join(PYTHON_DIRS)))
+
+
+@task
+def radon_mi(context):
+    """
+    Reports maintainability index.
+    """
+    context.run("radon mi {}".format(" ".join(PYTHON_DIRS)))
+
+
+@task(radon_cc, radon_mi)
+def radon(_context):
+    """
+    Reports radon.
+    """
+
+
+@task
+def xenon(context):
+    """
+    Check code complexity.
+    """
+    context.run(("xenon" " --max-absolute A" "--max-modules A" "--max-average A" "{}").format(" ".join(PYTHON_DIRS)))
+
+
+@task
+def test(context):
+    """
+    Run tests
+    """
+    pty = platform.system() == "Linux"
+    context.run("python {} test".format(SETUP_FILE), pty=pty)
 
 
 @task(help={"publish": "Publish the result via coveralls", "xml": "Export report as xml format"})

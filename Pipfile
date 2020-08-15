@@ -17,6 +17,7 @@ pytest-resource-path = {editable = true,path = "."}
 radon = "*"
 tox = "*"
 wheel = "*"
+xenon = "*"
 
 [packages]
 # Hotfix for Pipenv's Bug @see https://github.com/pypa/pipenv/issues/4101
@@ -25,6 +26,4 @@ colorama = "*"
 pytest = ">=3.5.0"
 
 [scripts]
-cc = "radon cc --show-complexity --min B ."
-mi = "radon mi --show ."
 build = "python setup.py sdist bdist_wheel"

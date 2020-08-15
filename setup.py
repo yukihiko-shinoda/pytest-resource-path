@@ -44,6 +44,8 @@ setup(
     packages=find_packages(exclude=("tests*",)),
     package_data={"pytest_resource_path": ["py.typed"]},
     python_requires=">=3.5",
+    test_suite="tests",
+    tests_require=["pytest>=3"],
     url="https://github.com/yukihiko-shinoda/pytest-resource-path",
     version="1.1.0",
 )
