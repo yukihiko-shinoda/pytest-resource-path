@@ -16,7 +16,7 @@ pylint = "*"
 pytest-resource-path = {editable = true,path = "."}
 radon = "*"
 tox = "*"
-wheel = "==0.34.2"
+wheel = "*"
 
 [packages]
 # Hotfix for Pipenv's Bug @see https://github.com/pypa/pipenv/issues/4101
