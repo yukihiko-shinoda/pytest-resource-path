@@ -5,24 +5,24 @@ verify_ssl = true
 
 [dev-packages]
 coverage = "*"
+flake8 = "*"
 invoke = "*"
 isort = "*"
-flake8 = "*"
 mypy = "*"
-pipenv-setup = "*"
 # Since pytester still use pathlib2 when Python version 3.5
 pathlib2 = "*"
+pipenv-setup = "*"
 pylint = "*"
+pytest-resource-path = {editable = true,path = "."}
 radon = "*"
 tox = "*"
 wheel = "==0.34.2"
-pytest-resource-path = {editable = true,path = "."}
 
 [packages]
-# The lower limit is based on the template created with Cookiecutter
-pytest = ">=3.5.0"
 # Hotfix for Pipenv's Bug @see https://github.com/pypa/pipenv/issues/4101
 colorama = "*"
+# The lower limit is based on the template created with Cookiecutter
+pytest = ">=3.5.0"
 
 [scripts]
 cc = "radon cc --show-complexity --min B ."
