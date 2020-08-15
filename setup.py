@@ -44,7 +44,7 @@ setup(
     maintainer="Yukihiko Shinoda",
     maintainer_email="yuk.hik.future@gmail.com",
     name="pytest-resource-path",
-    packages=find_packages(include=["pytest_resource_path", "pytest_resource_path.*", "tests", "tests.*",]),
+    packages=find_packages(include=["pytest_resource_path", "pytest_resource_path.*", "tests", "tests.*"]),
     package_data={"pytest_resource_path": ["py.typed"], "tests": ["*"]},
     python_requires=">=3.5",
     test_suite="tests",
