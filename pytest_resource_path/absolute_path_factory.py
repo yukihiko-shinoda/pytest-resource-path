@@ -6,6 +6,8 @@ from typing import Union
 from pytest_resource_path.exceptions import LogicError
 from pytest_resource_path.path_factory import PathFactory
 
+__all__ = ["AbsolutePathFactory"]
+
 
 class AbsolutePathFactory:
     """Implements creating process for absolute path to argument of constructor."""

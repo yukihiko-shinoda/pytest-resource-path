@@ -1,44 +1,18 @@
 """Implements fixtures to get path to resource."""
-from pathlib import Path
+from typing import List
 
-import pytest  # type: ignore
-
-from pytest_resource_path.path_to_resource_factory import PathToResourceFactory
+from pytest_resource_path.absolute_path_factory import *  # noqa
+from pytest_resource_path.exceptions import *  # noqa
+from pytest_resource_path.path_factory import *  # noqa
+from pytest_resource_path.path_to_resource_factory import *  # noqa
+from pytest_resource_path.pytest_resource_path import *  # noqa
 
 __version__ = "1.1.0"
 
-INI_KEY_DIRECTORY_NAME_TESTS = "resource-path.directory-name-tests"
-INI_KEY_DIRECTORY_NAME_TEST_RESOURCES = "resource-path.directory-name-test-resources"
-
-
-def pytest_addoption(parser):
-    """Adds options for pytest-resource-path."""
-    parser.addini(
-        INI_KEY_DIRECTORY_NAME_TESTS,
-        "Directory name for tests",
-        default=PathToResourceFactory.DIRECTORY_NAME_TESTS_DEAFAULT,
-    )
-    parser.addini(
-        INI_KEY_DIRECTORY_NAME_TEST_RESOURCES,
-        "Directory name for test resources",
-        default=PathToResourceFactory.DIRECTORY_NAME_TEST_RESOURCES_DEFAULT,
-    )
-
-
-@pytest.fixture
-def resource_path(request):
-    """Fixture to get path to resource."""
-    yield create_path_to_resource_factory(request).create(request.function)
-
-
-@pytest.fixture
-def resource_path_root(request):
-    """Fixture to get path to resource root."""
-    yield create_path_to_resource_factory(request).create_path_to_resource_root(request.function)
-
-
-def create_path_to_resource_factory(request):
-    """Creates PathToResourceFactory."""
-    path_tests = Path(request.config.getini(INI_KEY_DIRECTORY_NAME_TESTS))
-    path_test_resources = Path(request.config.getini(INI_KEY_DIRECTORY_NAME_TEST_RESOURCES))
-    return PathToResourceFactory(path_tests, path_test_resources)
+__all__: List[str] = []
+# pylint: disable=undefined-variable
+__all__ += absolute_path_factory.__all__  # type: ignore # noqa
+__all__ += exceptions.__all__  # type: ignore # noqa
+__all__ += path_factory.__all__  # type: ignore # noqa
+__all__ += path_to_resource_factory.__all__  # type: ignore # noqa
+__all__ += pytest_resource_path.__all__  # type: ignore # noqa

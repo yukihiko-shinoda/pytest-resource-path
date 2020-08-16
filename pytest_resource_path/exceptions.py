@@ -1,5 +1,7 @@
 """This module implements exceptions for this package."""
 
+__all__ = ["Error", "LogicError"]
+
 
 class Error(Exception):
     """
