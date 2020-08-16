@@ -1,7 +1,7 @@
 """Tests for path_to_resource_factory.py"""
 from pathlib import Path
 
-from pytest_resource_path import PathToResourceFactory
+from pytest_resource_path.pytest_resource_path import PathToResourceFactory
 from tests.testlibraries.function_getter import FunctionGetter
 
 

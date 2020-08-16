@@ -6,6 +6,8 @@ from typing import Optional, Union
 from pytest_resource_path.absolute_path_factory import AbsolutePathFactory
 from pytest_resource_path.path_factory import PathFactory
 
+__all__ = ["PathToResourceFactory"]
+
 
 class PathToResourceFactory:
     """Implements factory fot path to resource."""

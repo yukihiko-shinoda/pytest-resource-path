@@ -5,6 +5,8 @@ from pathlib import Path
 from types import FunctionType, MethodType
 from typing import Union
 
+__all__ = ["PathFactory"]
+
 
 class PathFactory:
     """Implements creating process for several pathlib object."""
