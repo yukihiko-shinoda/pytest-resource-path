@@ -38,7 +38,6 @@ setup(
     include_package_data=True,
     install_requires=["colorama", "pytest>=3.5.0"],
     keywords="pytest test fixture resource path pathlib",
-    license="MIT",
     long_description=read("README.md"),
     long_description_content_type="text/markdown",
     maintainer="Yukihiko Shinoda",
