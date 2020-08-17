@@ -5,7 +5,7 @@ from pytest_resource_path.path_factory import *  # noqa
 from pytest_resource_path.path_to_resource_factory import *  # noqa
 from pytest_resource_path.pytest_resource_path import *  # noqa
 
-__version__ = "1.1.0"
+__version__ = "1.2.0"
 
 __all__ = []
 # pylint: disable=undefined-variable
