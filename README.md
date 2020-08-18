@@ -47,7 +47,7 @@ You can use fixture `resource_path` which is pathlib.Path instance (**absolte pa
 
 ```python
 def test_method(resource_path):
-    text_test_resource = (resource_path / 'test_resource.txt').get_text()
+    text_test_resource = (resource_path / 'test_resource.txt').read_text()
 ```
 
 When assume that above `test_method` is in `tests/some_tests_package_some_test_module.py`, you have to place `test_resource.txt` following directory:
@@ -67,7 +67,7 @@ If you want to omit directory per method, you can do:
 
 ```python
 def test_method(resource_path):
-    text_test_resource = Path(f'{resource_path}.txt').get_text()
+    text_test_resource = Path(f'{resource_path}.txt').read_text()
 ```
 
 Note that the class name is not used in the path since It felt redundant in design.
@@ -78,7 +78,7 @@ You can use fixture `resource_path_root` which is pathlib.Path instance (**absol
 
 ```python
 def test_method(resource_path_root):
-    text_test_resource = (resource_path_root / 'test_resource.txt').get_text()
+    text_test_resource = (resource_path_root / 'test_resource.txt').read_text()
 ```
 
 ```bash
@@ -94,7 +94,7 @@ Or, may be usiful to preapare common directory with some of tests.
 
 ```python
 def test_method(resource_path_root):
-    text_test_resource = (resource_path_root / 'common/test_resource.txt').get_text()
+    text_test_resource = (resource_path_root / 'common/test_resource.txt').read_text()
 ```
 
 ```bash
