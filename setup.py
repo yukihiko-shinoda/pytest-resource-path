@@ -50,6 +50,6 @@ setup(
     test_suite="tests",
     tests_require=["pytest>=3"],
     url="https://github.com/yukihiko-shinoda/pytest-resource-path",
-    version="1.2.0",
+    version="1.2.1",
     zip_safe=False,
 )
