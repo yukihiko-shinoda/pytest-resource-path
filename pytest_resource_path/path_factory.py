@@ -17,7 +17,7 @@ class PathFactory:
         return Path(splitext(cls._create_string_absolute_path(item))[0])
 
     @classmethod
-    def create_absolute_path(cls, item: Union[MethodType, FunctionType]) -> Path:
+    def create_absolute_path_by_function(cls, item: Union[MethodType, FunctionType]) -> Path:
         """Creates absolute path."""
         return Path(cls._create_string_absolute_path(item)).resolve()
 

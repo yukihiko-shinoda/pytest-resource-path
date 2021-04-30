@@ -3,6 +3,7 @@ from pathlib import Path
 
 from pytest_resource_path.pytest_resource_path import PathToResourceFactory
 from tests.testlibraries.function_getter import FunctionGetter
+from tests.testlibraries.module_getter import ModuleGetter
 
 
 class TestPathToResourceFactory:
@@ -36,8 +37,8 @@ class TestPathToResourceFactory:
         @see https://github.com/pytest-dev/pytest/blob/3d0f3baa2bb89257dfff25ae6ebabd565287240e/testing/python/fixtures.py#L782 # noqa
         """
         file_name_pytest = "test_module_something"
-        function = FunctionGetter.get(file_name_pytest, testdir_structure)
-        path = PathToResourceFactory().create_path_to_resource_root(function)
+        module = ModuleGetter.get(file_name_pytest, testdir_structure)
+        path = PathToResourceFactory().create_path_to_resource_root(Path(module.fspath).resolve())
         assert path == Path(str(testdir_structure.tmpdir) + "/tests/testresources")
 
     @staticmethod

@@ -15,6 +15,7 @@ class TestInit:
         lines = [
             "*::test_resource_path PASSED*",
             "*::test_resource_path_root PASSED*",
+            "*::test_resource_path_root_scope_package PASSED*",
         ]
         result.stdout.fnmatch_lines(lines)
 
@@ -39,6 +40,7 @@ class TestInit:
         lines = [
             "*::test_resource_path_ini PASSED*",
             "*::test_resource_path_root_ini PASSED*",
+            "*::test_resource_path_root_scope_package_ini PASSED*",
         ]
         result.stdout.fnmatch_lines(lines)
 

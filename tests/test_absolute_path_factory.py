@@ -14,6 +14,6 @@ class TestAbsolutePathFactory:
         file_name_pytest = "test_module_something"
         function = FunctionGetter.get(file_name_pytest, testdir_structure)
         # noinspection PyProtectedMember
-        path = AbsolutePathFactory(Path("tests")).create(function)
+        path = AbsolutePathFactory(Path("tests")).create_by_function(function)
         assert path.is_absolute() is True
         assert path.name == "tests"
