@@ -15,9 +15,12 @@ class AbsolutePathFactory:
     def __init__(self, path_target: Path):
         self.path_target = path_target
 
-    def create(self, item: Union[MethodType, FunctionType]) -> Path:
+    def create_by_function(self, item: Union[MethodType, FunctionType]) -> Path:
+        path = PathFactory.create_absolute_path_by_function(item)
+        return self.create_by_path(path)
+
+    def create_by_path(self, path: Path) -> Path:
         """Creates absolute path to parh_target."""
-        path = PathFactory.create_absolute_path(item)
         index = None
         index_tests = None
         string_path_tests = str(self.path_target)

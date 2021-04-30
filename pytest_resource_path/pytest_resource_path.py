@@ -38,10 +38,10 @@ def resource_path(request):
     yield create_path_to_resource_factory(request).create(request.function)
 
 
-@pytest.fixture
+@pytest.fixture(scope="package")
 def resource_path_root(request):
     """Fixture to get path to resource root."""
-    yield create_path_to_resource_factory(request).create_path_to_resource_root(request.function)
+    yield create_path_to_resource_factory(request).create_path_to_resource_root(Path(str(request.fspath)).resolve())
 
 
 def create_path_to_resource_factory(request):
