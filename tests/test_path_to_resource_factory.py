@@ -38,7 +38,7 @@ class TestPathToResourceFactory:
         """
         file_name_pytest = "test_module_something"
         module = ModuleGetter.get(file_name_pytest, testdir_structure)
-        path = PathToResourceFactory().create_path_to_resource_root(Path(module.fspath).resolve())
+        path = PathToResourceFactory().create_path_to_resource_root(Path(str(module.fspath)).resolve())
         assert path == Path(str(testdir_structure.tmpdir) + "/tests/testresources")
 
     @staticmethod
