@@ -1,3 +1,152 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[dependency-groups]
+dev = [
+    "autoflake",
+    "bandit; python_version >= '3.7'",
+    "black; python_version >= '3.7'",
+    "build",
+    "bump2version",
+    "cohesion",
+    # Pipenv can't crawl coverage==3.5.3:
+    # - Command: "pipenv install --skip-lock" fails 
+    #   since it tries to parse legacy package metadata and raise InstallError
+    #   · Issue #5595 · pypa/pipenv
+    #   https://github.com/pypa/pipenv/issues/5595
+    "coverage>=3.5.4",
+    # The dlint less than 0.14.0 limits max version of flake8.
+    "dlint>=0.14.0",
+    "docformatter",
+    "dodgy",
+    # Since Pipenv can't lock for too much combinations to attempt lock:
+    # pip._vendor.resolvelib.resolvers.ResolutionTooDeep: 2000000
+    # The hacking depends flake8 ~=6.1.0 or ~=5.0.1 or ~=4.0.1.
+    "flake8!=6.0.0,!=5.0.0,>=4.0.1; python_version >= '3.6'",
+    # To use flake8 --radon-show-closures
+    "flake8-polyfill",
+    # Latest hacking depends on legacy version of flake8, and legacy hacking doesn't narrow flake8 version.
+    # When unpin hacking, it has possibility to install too legacy version of hacking.
+    "hacking>=5.0.0; python_version >= '3.8'",
+    "invokelint; python_version >= '3.7'",
+    "isort",
+    "mypy",
+    # Since pytester still use pathlib2 when Python version 3.5
+    "pathlib2",
+    "pydocstyle; python_version >= '3.6'",
+    "pylint",
+    "pyvelocity; python_version >= '3.9'",
+    "radon<6.0.0",
+    "ruff; python_version >= '3.7'",
+    "semgrep;python_version>='3.9' or python_version>='3.6' and platform_system=='Linux'",
+    "types-invoke",
+    "xenon",
+]
+
+[project]
+name="pytest-resource-path"
+version="1.3.0"
+description = "Provides path for uniform access to test resources in isolated directory"
+readme = "README.md"
+requires-python = ">=3.5"
+dependencies = [
+  "pytest>=3.5.0",
+]
+license = {file = "LICENSE"}
+authors = [
+  {name = "Yukihiko Shinoda", email = "yuk.hik.future@gmail.com"},
+]
+maintainers = [
+  {name = "Yukihiko Shinoda", email = "yuk.hik.future@gmail.com"}
+]
+keywords = [
+    "pytest",
+    "test",
+    "fixture",
+    "resource",
+    "path",
+    "pathlib",
+]
+classifiers=[
+    "Development Status :: 5 - Production/Stable",
+    "Framework :: Pytest",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.5",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Topic :: Software Development :: Testing",
+    "Topic :: System :: Filesystems",
+    "Typing :: Typed",
+]
+
+[project.entry-points.pytest11]
+resource-path = "pytest_resource_path"
+
+[project.urls]
+homepage = "https://github.com/yukihiko-shinoda/pytest-resource-path"
+# documentation = "https://readthedocs.org"
+repository = "https://github.com/yukihiko-shinoda/pytest-resource-path"
+# changelog = "https://github.com/me/spam/blob/master/CHANGELOG.md"
+
+[tool.setuptools]
+zip-safe = false
+
+[tool.setuptools.package-data]
+"*" = ["py.typed"]
+
+[tool.bandit.assert_used]
+skips = ["tests/*"]
+
+# @see https://black.readthedocs.io/en/stable/pyproject_toml.html#configuration-format
+[tool.black]
+line-length = 119
+
+[tool.coverage.run]
+source = ["pytest_resource_path"]
+
+[tool.coverage.report]
+exclude_also = [
+    # Assume `if TYPE_CHECKING: ... else: ...` block is covered · Issue #831 · nedbat/coveragepy
+    #   https://github.com/nedbat/coveragepy/issues/831#issuecomment-517778185
+    "if TYPE_CHECKING:",
+    # Pylint will detect instead:
+    # - abstract-method / W0223 - Pylint 2.17.0-dev0 documentation
+    #   https://pylint.readthedocs.io/en/latest/user_guide/messages/warning/abstract-method.html
+    "raise AssertionError",
+    "raise NotImplementedError",
+]
+
+[tool.docformatter]
+recursive = true
+wrap-descriptions = 119
+wrap-summaries = 119
+
+[tool.flake8]
+# @see https://github.com/psf/black/blob/master/README.md#line-length
+max_line_length = 119
+extend_ignore = [
+  "E203",
+  # Since it conflicts with Black, Black and its philosophy should be respect than hacking.
+  # see: https://github.com/psf/black
+  "H301",
+  # Cohesion may be in experimental.
+  "H601",
+]
+statistics = true
+show_source = true
+exclude = [
+  ".venv",
+  "docs",
+]
+
 [tool.isort]
 # @see https://github.com/timothycrosley/isort/issues/694#issuecomment-581246882
 multi_line_output = 3
@@ -5,25 +154,122 @@ include_trailing_comma = true
 force_grid_wrap = 0
 use_parentheses = true
 ensure_newline_before_comments = true
-line_length = 120
+line_length = 119
+# For compatibility with PyLint and Hacking, Google also supports, 
+# Black doesn't have any opinions
+# see:
+# - https://pycqa.github.io/isort/docs/configuration/profiles.html
+# - https://qiita.com/kaityo256/items/5b0b55d105ef2366cb0c
+# - https://www.xn--ebkc7kqd.com/entry/hacking-isort
+force_sort_within_sections = true
+lexicographical = true
+# Google supports, Black doesn't have any opinions
+# see: https://pycqa.github.io/isort/docs/configuration/profiles.html
+order_by_type = false
 
-# @see https://black.readthedocs.io/en/stable/pyproject_toml.html#configuration-format
-[tool.black]
-line-length = 120
+[tool.mypy]
+strict = true
+
+[tool.pydocstyle]
+# To add Google convention
+# see:
+# - Error Codes — pydocstyle 6.1.1 documentation
+#   http://www.pydocstyle.org/en/stable/error_codes.html#default-conventions
+add_select = ["D212", "D214", "D410", "D411", "D415", "D416", "D417"]
+# D400: First line may ends with ":" for expression.
+# D402: First line may ends with function signature for expression.
+# D415: First line may ends with ":" for expression.
+# D101: Docstring may be missed in public class since docstring-min-length is set.
+# D102: Docstring may be missed in public method since docstring-min-length is set.
+# D103: Docstring may be missed in public function since docstring-min-length is set.
+# D105: Docstring may be missed in magic method since docstring-min-length is set.
+# D105: Docstring may be missed in public nested class since docstring-min-length is set.
+# D107: Docstring may be missed in __init__ method since docstring-min-length is set.
+add_ignore = ["D400", "D401", "D402", "D415", "D101", "D102", "D103", "D105", "D106", "D107"]
 
 [tool.pylint.basic]
 docstring-min-length = "7"
 
 [tool.pylint.format]
-max-line-length = "120"
+max-line-length = 119
 
-[tool.pylint.messages_control]
-# bad-continuation: @see https://github.com/PyCQA/pylint/pull/3571
-disable = ''',
-    bad-continuation,
-    '''
-
-[tool.pylint.design]
-# Since this is against "Single Responsibility Principle".
+[tool.pylint.options]
+# Since this rule against single responsibility principle.
 # @see https://stackoverflow.com/questions/28722314/why-does-pylint-want-2-public-methods-per-class/40258006#40258006
 min-public-methods = "1"
+
+[tool.pytest.ini_options]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+]
+# log_cli = true
+# log_cli_level = "DEBUG"
+# log_format = "%(asctime)s %(process)d %(levelname)s %(name)s:%(filename)s:%(lineno)d %(message)s"
+
+[tool.ruff]
+line-length = 119
+target-version = "py37"
+
+[tool.ruff.lint]
+select = [
+    "F",  # Pyflakes
+    "E",  # pycodestyle
+    "W",  # pycodestyle
+    "C90",  # mccabe
+    # "I",  # isort
+    "N",  # pep8-naming
+    # "D",  # pydocstyle
+    "UP",  # pyupgrade
+    "YTT",  # flake8-2020
+    "ANN",  # flake8-annotations
+    "S",  # flake8-bandit
+    "BLE",  # flake8-blind-except
+    "FBT",  # flake8-boolean-trap
+    "B",  # flake8-bugbear
+    "A",  # flake8-builtins
+    "COM",  # flake8-commas
+    "C4",  # flake8-comprehensions
+    "DTZ",  # flake8-datetimez
+    "T10",  # flake8-debugger
+    "DJ",  # flake8-django
+    "EM",  # flake8-errmsg
+    "EXE",  # flake8-executable
+    "ISC",  # flake8-implicit-str-concat
+    "ICN",  # flake8-import-conventions
+    "G",  # flake8-logging-format
+    "INP",  # flake8-no-pep420
+    "PIE",  # flake8-pie
+    "T20",  # flake8-print
+    "PYI",  # flake8-pyi
+    "PT",  # flake8-pytest-style
+    "Q",  # flake8-quotes
+    "RSE",  # flake8-raise
+    "RET",  # flake8-return
+    "SLF",  # flake8-self
+    "SIM",  # flake8-simplify
+    "TID",  # flake8-tidy-imports
+    "ARG",  # flake8-unused-arguments
+    "PTH",  # flake8-use-pathlib
+    "ERA",  # eradicate
+    "PD",  # pandas-vet
+    "PGH",  # pygrep-hooks
+    "PL",  # Pylint
+    "TRY",  # tryceratops
+    "NPY",  # NumPy-specific rules
+    "RUF",  # Ruff-specific rules
+]
+ignore = [
+    "UP032",  # [*] Use f-string instead of `format` call
+    "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed, These warnings are disabled by default
+]
+fixable = [
+    "COM812",  # Trailing comma missing
+    "PT001",  # Use `@pytest.fixture()` over `@pytest.fixture`
+    "PT006",  # Wrong name(s) type in `@pytest.mark.parametrize`, expected `tuple`
+    "SIM108",  # Use ternary operator `extra_context = {} if extra_context is None else request.param` instead of `if`-`else`-block
+    "UP015",  # Unnecessary open mode parameters
+    "UP037",  # Remove quotes from type annotation
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101"]
