@@ -41,6 +41,7 @@ dev = [
     "ruff; python_version >= '3.7'",
     "semgrep;python_version>='3.9' or python_version>='3.6' and platform_system=='Linux'",
     "types-invoke",
+    "types-setuptools",
     "xenon",
 ]
 
@@ -49,11 +50,12 @@ name="pytest-resource-path"
 version="1.3.0"
 description = "Provides path for uniform access to test resources in isolated directory"
 readme = "README.md"
-requires-python = ">=3.5"
+requires-python = ">=3.7"
 dependencies = [
   "pytest>=3.5.0",
 ]
-license = {file = "LICENSE"}
+license = "MIT"
+license-files = ["LICENSE"]
 authors = [
   {name = "Yukihiko Shinoda", email = "yuk.hik.future@gmail.com"},
 ]
@@ -72,7 +74,6 @@ classifiers=[
     "Development Status :: 5 - Production/Stable",
     "Framework :: Pytest",
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: MIT License",
     "Natural Language :: English",
     "Operating System :: OS Independent",
     "Programming Language :: Python",
@@ -208,7 +209,6 @@ markers = [
 
 [tool.ruff]
 line-length = 119
-target-version = "py37"
 
 [tool.ruff.lint]
 select = [

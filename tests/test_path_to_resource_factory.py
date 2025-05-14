@@ -1,21 +1,26 @@
-"""Tests for path_to_resource_factory.py"""
+"""Tests for path_to_resource_factory.py."""
+
 from pathlib import Path
 
-from pytest_resource_path.pytest_resource_path import PathToResourceFactory
+import pytest
+
+from pytest_resource_path import PathToResourceFactory
 from tests.testlibraries.function_getter import FunctionGetter
 from tests.testlibraries.module_getter import ModuleGetter
 
 
 class TestPathToResourceFactory:
-    """Tests for path_to_resource_factory.py"""
+    """Tests for path_to_resource_factory.py."""
 
     @staticmethod
-    def test_create(testdir_structure):
+    def test_create(testdir_structure: pytest.Testdir) -> None:
         # noinspection LongLine
         # pylint:disable=line-too-long
-        """
-        Method should return path to resource directory of argument method.
-        @see https://github.com/pytest-dev/pytest/blob/3d0f3baa2bb89257dfff25ae6ebabd565287240e/testing/python/fixtures.py#L782 # noqa
+        """Method should return path to resource directory of argument method.
+
+        @see
+        https://github.com/pytest-dev/pytest/blob/3d0f3baa2bb89257dfff25ae6ebabd565287240e/testing/python/fixtures.py#L782
+        # noqa
         """
         file_name_pytest = "test_module_something"
         function = FunctionGetter.get(file_name_pytest, testdir_structure)
@@ -29,12 +34,14 @@ class TestPathToResourceFactory:
         )
 
     @staticmethod
-    def test_create_path_to_resource_root(testdir_structure):
+    def test_create_path_to_resource_root(testdir_structure: pytest.Testdir) -> None:
         # noinspection LongLine
         # pylint:disable=line-too-long
-        """
-        Method should return path to resource directory of argument method.
-        @see https://github.com/pytest-dev/pytest/blob/3d0f3baa2bb89257dfff25ae6ebabd565287240e/testing/python/fixtures.py#L782 # noqa
+        """Method should return path to resource directory of argument method.
+
+        @see
+        https://github.com/pytest-dev/pytest/blob/3d0f3baa2bb89257dfff25ae6ebabd565287240e/testing/python/fixtures.py#L782
+        # noqa
         """
         file_name_pytest = "test_module_something"
         module = ModuleGetter.get(file_name_pytest, testdir_structure)
@@ -42,8 +49,8 @@ class TestPathToResourceFactory:
         assert path == Path(str(testdir_structure.tmpdir) + "/tests/testresources")
 
     @staticmethod
-    def test_run_test_in_sub_directory(testdir_structure):
-        """pytest in sub directory in temporary directory should work well."""
+    def test_run_test_in_sub_directory(testdir_structure: pytest.Testdir) -> None:
+        """Pytest in sub directory in temporary directory should work well."""
         result = testdir_structure.runpytest("-v")
 
         # fnmatch_lines does an assertion internally
