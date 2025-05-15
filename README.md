@@ -4,7 +4,7 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/a5160a2616238bad3349/test_coverage)](https://codeclimate.com/github/yukihiko-shinoda/pytest-resource-path/test_coverage)
 [![Maintainability](https://api.codeclimate.com/v1/badges/a5160a2616238bad3349/maintainability)](https://codeclimate.com/github/yukihiko-shinoda/pytest-resource-path/maintainability)
 [![Code Climate technical debt](https://img.shields.io/codeclimate/tech-debt/yukihiko-shinoda/pytest-resource-path)](https://codeclimate.com/github/yukihiko-shinoda/pytest-resource-path)
-[![Updates](https://pyup.io/repos/github/yukihiko-shinoda/pytest-resource-path/shield.svg)](https://pyup.io/repos/github/yukihiko-shinoda/pytest-resource-path/)
+[![Dependabot](https://flat.badgen.net/github/dependabot/yukihiko-shinoda/pytest-resource-path?icon=dependabot)](https://github.com/yukihiko-shinoda/pytest-resource-path/security/dependabot)
 [![Python versions](https://img.shields.io/pypi/pyversions/pytest-resource-path.svg)](https://pypi.org/project/pytest-resource-path)
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/pytest-resource-path)](https://pypi.org/project/pytest-resource-path)
 [![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2Fyukihiko-shinoda%2Fpytest-resource-path)](http://twitter.com/share?text=pytest-resource-path&url=https://pypi.org/project/pytest-resource-path/&hashtags=python)
@@ -22,7 +22,7 @@ If we place test resource with test code, these resources will fill the display 
 
 This pytest plugin assumes that test resource is placed under `testresources` directory directly under `tests`. (Don't worry, you can customize these directory names by `pytest.ini`)
 
-```bash
+```plaintext
 tests/
 +-- some_test_package/
 |   +-- some_test_module.py
@@ -52,7 +52,7 @@ def test_method(resource_path):
 
 When assume that above `test_method` is in `tests/some_tests_package_some_test_module.py`, you have to place `test_resource.txt` following directory:
 
-```bash
+```plaintext
 tests/
 +-- some_test_package/
 |   +-- some_test_module.py
@@ -81,7 +81,7 @@ def test_method(resource_path_root):
     text_test_resource = (resource_path_root / 'test_resource.txt').read_text()
 ```
 
-```bash
+```plaintext
 tests/
 +-- some_test_package/
 |   +-- some_test_module.py
@@ -97,7 +97,7 @@ def test_method(resource_path_root):
     text_test_resource = (resource_path_root / 'common/test_resource.txt').read_text()
 ```
 
-```bash
+```plaintext
 tests/
 +-- some_test_package/
 |   +-- some_test_module.py
@@ -129,7 +129,7 @@ resource-path.directory-name-test-resources = data
 
 Above customize fits following directory strucure:
 
-```bash
+```plaintext
 integrationtests/
 +-- some_test_package/
 |   +-- some_test_module.py
