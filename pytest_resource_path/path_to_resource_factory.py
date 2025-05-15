@@ -17,7 +17,7 @@ class PathToResourceFactory:
     DIRECTORY_NAME_TEST_RESOURCES_DEFAULT = "testresources"
     """This class implements uniform access to test resources."""
 
-    def __init__(self, path_tests: Path | None = None, path_test_resources: Optional[Path] = None) -> None:
+    def __init__(self, path_tests: Optional[Path] = None, path_test_resources: Optional[Path] = None) -> None:
         initialized_path_tests = self._init_path(path_tests, self.DIRECTORY_NAME_TESTS_DEAFAULT)
         self.absolute_path_factory = AbsolutePathFactory(initialized_path_tests)
         self.path_test_resources = self._init_path(path_test_resources, self.DIRECTORY_NAME_TEST_RESOURCES_DEFAULT)
