@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
-        python-version: [ '3.13', '3.12', '3.11', '3.10', '3.9', '3.8', '3.7' ]
+        python-version: [ '3.13', '3.12', '3.11', '3.10', '3.9', '3.8' ]
       fail-fast: false
     steps:
       - uses: actions/checkout@v4
@@ -22,6 +22,23 @@ jobs:
       - run: python -m pip install uv
       - run: python -m uv sync
       - run: python -m uv run invoke test.all
+  test_legacy_linux:
+    # "It mostly works, especially on Linux and macOS, but it’s not officially supported.":
+    # - uv tool run is giving "SyntaxError: Non-UTF-8 code starting with '\xe8' in file..." · Issue #12122 · astral-sh/uv
+    #   https://github.com/astral-sh/uv/issues/12122#issuecomment-2761278707
+    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        python-version: [ '3.7' ]
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: curl -LsSf https://astral.sh/uv/install.sh | sh
+      - run: uv sync --python ${{ matrix.python-version }}
+      - run: uv run invoke test
   check_style:
     runs-on: ubuntu-latest
     steps:
