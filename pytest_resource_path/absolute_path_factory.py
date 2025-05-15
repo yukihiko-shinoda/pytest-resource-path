@@ -1,4 +1,5 @@
 """Implements creating process for absolute path to argument of constructor."""
+
 from pathlib import Path
 from types import FunctionType, MethodType
 from typing import Union
@@ -12,7 +13,7 @@ __all__ = ["AbsolutePathFactory"]
 class AbsolutePathFactory:
     """Implements creating process for absolute path to argument of constructor."""
 
-    def __init__(self, path_target: Path):
+    def __init__(self, path_target: Path) -> None:
         self.path_target = path_target
 
     def create_by_function(self, item: Union[MethodType, FunctionType]) -> Path:
@@ -33,6 +34,6 @@ class AbsolutePathFactory:
                 "path = " + str(path) + ",\n"
                 "string_path_tests = " + string_path_tests + ",\n"
                 "index_tests, " + str(index_tests) + ",\n"
-                "index = " + str(index)
+                "index = " + str(index),
             )
         return path.parents[index - index_tests - 1]

@@ -1,11 +1,13 @@
 """Tests for __init__.py."""
 
+import pytest
+
 
 class TestInit:
     """Tests for __init__.py."""
 
     @staticmethod
-    def test_fixture(testdir_structure_for_testing_resource_path):
+    def test_fixture(testdir_structure_for_testing_resource_path: pytest.Testdir) -> None:
         """Fixture should be expected path."""
 
         # run pytest
@@ -23,14 +25,14 @@ class TestInit:
         assert result.ret == 0
 
     @staticmethod
-    def test_fixture_with_ini(testdir_structure_for_testing_ini):
+    def test_fixture_with_ini(testdir_structure_for_testing_ini: pytest.Testdir) -> None:
         """Fixture should be expected path with pytest.ini."""
         testdir_structure_for_testing_ini.makeini(
             """
             [pytest]
             resource-path.directory-name-tests = integrationtests
             resource-path.directory-name-test-resources = data
-        """
+        """,
         )
 
         # run pytest
