@@ -5,7 +5,7 @@ from pathlib import Path
 import pytest
 
 from pytest_resource_path.path_to_resource_factory import PathToResourceFactory
-from tests.testlibraries.pytest_backward_compatibility import get_path
+from pytest_resource_path.pytest_backward_compatibility import get_path
 
 __all__ = [
     "INI_KEY_DIRECTORY_NAME_TESTS",

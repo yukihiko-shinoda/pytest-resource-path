@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pytest
 
-from tests.testlibraries.pytest_backward_compatibility import get_path
+from pytest_resource_path.pytest_backward_compatibility import get_path
 
 
 def test_resource_path(resource_path: Path, request: pytest.FixtureRequest) -> None:
