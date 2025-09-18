@@ -1,13 +1,14 @@
 # pytest-resource-path
 
 [![Test](https://github.com/yukihiko-shinoda/pytest-resource-path/workflows/Test/badge.svg)](https://github.com/yukihiko-shinoda/pytest-resource-path/actions?query=workflow%3ATest)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/a5160a2616238bad3349/test_coverage)](https://codeclimate.com/github/yukihiko-shinoda/pytest-resource-path/test_coverage)
-[![Maintainability](https://api.codeclimate.com/v1/badges/a5160a2616238bad3349/maintainability)](https://codeclimate.com/github/yukihiko-shinoda/pytest-resource-path/maintainability)
+[![CodeQL](https://github.com/yukihiko-shinoda/pytest-resource-path/workflows/CodeQL/badge.svg)](https://github.com/yukihiko-shinoda/pytest-resource-path/actions?query=workflow%3ACodeQL)
+[![Code Coverage](https://qlty.sh/gh/yukihiko-shinoda/projects/pytest-resource-path/coverage.svg)](https://qlty.sh/gh/yukihiko-shinoda/projects/pytest-resource-path)
+[![Maintainability](https://qlty.sh/gh/yukihiko-shinoda/projects/pytest-resource-path/maintainability.svg)](https://qlty.sh/gh/yukihiko-shinoda/projects/pytest-resource-path)
 [![Code Climate technical debt](https://img.shields.io/codeclimate/tech-debt/yukihiko-shinoda/pytest-resource-path)](https://codeclimate.com/github/yukihiko-shinoda/pytest-resource-path)
 [![Dependabot](https://flat.badgen.net/github/dependabot/yukihiko-shinoda/pytest-resource-path?icon=dependabot)](https://github.com/yukihiko-shinoda/pytest-resource-path/security/dependabot)
 [![Python versions](https://img.shields.io/pypi/pyversions/pytest-resource-path.svg)](https://pypi.org/project/pytest-resource-path)
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/pytest-resource-path)](https://pypi.org/project/pytest-resource-path)
-[![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2Fyukihiko-shinoda%2Fpytest-resource-path)](http://twitter.com/share?text=pytest-resource-path&url=https://pypi.org/project/pytest-resource-path/&hashtags=python)
+[![X URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2Fyukihiko-shinoda%2Fpytest-resource-path)](https://x.com/intent/post?text=pytest-resource-path&url=https%3A%2F%2Fpypi.org%2Fproject%2Fpytest-resource-path%2F&hashtags=python)
 
 Provides path for uniform access to test resources in isolated directory
 
