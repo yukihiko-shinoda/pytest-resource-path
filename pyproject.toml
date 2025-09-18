@@ -51,7 +51,7 @@ dev = [
 
 [project]
 name="pytest-resource-path"
-version="1.4.0"
+version="1.4.1"
 description = "Provides path for uniform access to test resources in isolated directory"
 readme = "README.md"
 requires-python = ">=3.7"
@@ -106,7 +106,7 @@ repository = "https://github.com/yukihiko-shinoda/pytest-resource-path"
 skips = ["tests/*"]
 
 [tool.bumpversion]
-current_version = "1.4.0"
+current_version = "1.4.1"
 commit = true
 tag = true
 
