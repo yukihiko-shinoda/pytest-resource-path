@@ -1,11 +1,16 @@
 """Implements creating process for absolute path to argument of constructor."""
 
-from pathlib import Path
-from types import FunctionType, MethodType
-from typing import Union
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 
 from pytest_resource_path.exceptions import LogicError
 from pytest_resource_path.path_factory import PathFactory
+
+if TYPE_CHECKING:
+    from pathlib import Path
+    from types import FunctionType
+    from types import MethodType
 
 __all__ = ["AbsolutePathFactory"]
 
@@ -16,7 +21,7 @@ class AbsolutePathFactory:
     def __init__(self, path_target: Path) -> None:
         self.path_target = path_target
 
-    def create_by_function(self, item: Union[MethodType, FunctionType]) -> Path:
+    def create_by_function(self, item: MethodType | FunctionType) -> Path:
         path = PathFactory.create_absolute_path_by_function(item)
         return self.create_by_path(path)
 

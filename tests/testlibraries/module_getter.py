@@ -15,4 +15,4 @@ class ModuleGetter:
         path_to_python_file_string = "tests/test_package/" + file_name_pytest + ".py"
         path = pathlib.Path(path_to_python_file_string)
         # Reason: Pytest's issue
-        return cast(pytest.Module, testdir_structure.getmodulecol(path))  # type: ignore[no-untyped-call]
+        return cast("pytest.Module", testdir_structure.getmodulecol(path))  # type: ignore[no-untyped-call]
