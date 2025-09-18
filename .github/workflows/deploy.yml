@@ -11,9 +11,7 @@ jobs:
         with:
           python-version: '3.13'
       - run: uv sync
-        env:
-          UV_PROJECT_ENVIRONMENT: ${{env.Python_ROOT_DIR}}
-      - run: invoke dist
+      - run: uv run invoke dist
       - uses: pypa/gh-action-pypi-publish@release/v1
         with:
-          password: ${{ secrets.pypi_password }}
+          password: ${{ secrets.PYPI_PASSWORD }}
