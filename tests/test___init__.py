@@ -9,7 +9,6 @@ class TestInit:
     @staticmethod
     def test_fixture(testdir_structure_for_testing_resource_path: pytest.Testdir) -> None:
         """Fixture should be expected path."""
-
         # run pytest
         result = testdir_structure_for_testing_resource_path.runpytest("-v")
 
