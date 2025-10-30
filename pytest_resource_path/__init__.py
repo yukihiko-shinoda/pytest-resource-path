@@ -6,7 +6,7 @@ from pytest_resource_path.path_factory import *  # noqa: F403
 from pytest_resource_path.path_to_resource_factory import *  # noqa: F403
 from pytest_resource_path.pytest_resource_path import *  # noqa: F403
 
-__version__ = "1.4.0"
+__version__ = "1.4.1"
 
 __all__ = []
 __all__ += absolute_path_factory.__all__  # type:ignore[name-defined] # noqa: F405 pylint: disable=undefined-variable

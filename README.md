@@ -4,7 +4,6 @@
 [![CodeQL](https://github.com/yukihiko-shinoda/pytest-resource-path/workflows/CodeQL/badge.svg)](https://github.com/yukihiko-shinoda/pytest-resource-path/actions?query=workflow%3ACodeQL)
 [![Code Coverage](https://qlty.sh/gh/yukihiko-shinoda/projects/pytest-resource-path/coverage.svg)](https://qlty.sh/gh/yukihiko-shinoda/projects/pytest-resource-path)
 [![Maintainability](https://qlty.sh/gh/yukihiko-shinoda/projects/pytest-resource-path/maintainability.svg)](https://qlty.sh/gh/yukihiko-shinoda/projects/pytest-resource-path)
-[![Code Climate technical debt](https://img.shields.io/codeclimate/tech-debt/yukihiko-shinoda/pytest-resource-path)](https://codeclimate.com/github/yukihiko-shinoda/pytest-resource-path)
 [![Dependabot](https://flat.badgen.net/github/dependabot/yukihiko-shinoda/pytest-resource-path?icon=dependabot)](https://github.com/yukihiko-shinoda/pytest-resource-path/security/dependabot)
 [![Python versions](https://img.shields.io/pypi/pyversions/pytest-resource-path.svg)](https://pypi.org/project/pytest-resource-path)
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/pytest-resource-path)](https://pypi.org/project/pytest-resource-path)
