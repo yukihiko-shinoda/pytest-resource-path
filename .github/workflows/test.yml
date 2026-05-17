@@ -17,3 +17,5 @@ jobs:
       is-supporting-python-3-7-in-linux: true
   call-workflow-lint:
     uses: yukihiko-shinoda/invoke-lint/.github/workflows/reusable-lint.yml@main
+    with:
+      no-xenon: true
