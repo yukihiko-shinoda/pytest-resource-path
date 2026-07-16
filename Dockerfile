@@ -1,4 +1,4 @@
-FROM futureys/claude-code-python-development:20260609002000
+FROM futureys/claude-code-python-development:20260710125000
 COPY pyproject.toml /workspace/
 # - Using uv in Docker | uv
 #   https://docs.astral.sh/uv/guides/integration/docker/#caching
