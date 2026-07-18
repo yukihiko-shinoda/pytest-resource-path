@@ -1,4 +1,0 @@
-services:
-  pytest-resource-path:
-    build: .
-    image: futureys/pytest-resource-path:development
