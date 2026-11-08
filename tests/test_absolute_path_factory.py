@@ -1,5 +1,9 @@
 """Tests for absolute_path_factory.py."""
 
+__author__ = "Yukihiko Shinoda"
+__copyright__ = "Copyright (c) 2020 Yukihiko Shinoda"
+__license__ = "MIT"
+
 from pathlib import Path
 
 import pytest

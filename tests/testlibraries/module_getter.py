@@ -1,5 +1,9 @@
 """Implements getting process for module object in pytest by pytest file name and testdir object."""
 
+__author__ = "Yukihiko Shinoda"
+__copyright__ = "Copyright (c) 2020 Yukihiko Shinoda"
+__license__ = "MIT"
+
 import pathlib
 from typing import cast
 

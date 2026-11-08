@@ -3,6 +3,10 @@
 Execute 'invoke --list' for guidance on using Invoke
 """
 
+__author__ = "Yukihiko Shinoda"
+__copyright__ = "Copyright (c) 2020 Yukihiko Shinoda"
+__license__ = "MIT"
+
 from invoke import Collection
 from invokelint import _clean
 from invokelint import dist

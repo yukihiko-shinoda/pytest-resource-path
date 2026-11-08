@@ -1,5 +1,9 @@
 """Implements fixtures to get path to resource."""
 
+__author__ = "Yukihiko Shinoda"
+__copyright__ = "Copyright (c) 2020 Yukihiko Shinoda"
+__license__ = "MIT"
+
 from pytest_resource_path.absolute_path_factory import *  # noqa: F403
 from pytest_resource_path.exceptions import *  # noqa: F403
 from pytest_resource_path.path_factory import *  # noqa: F403
