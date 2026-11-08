@@ -2,6 +2,10 @@
 
 from __future__ import annotations
 
+__author__ = "Yukihiko Shinoda"
+__copyright__ = "Copyright (c) 2020 Yukihiko Shinoda"
+__license__ = "MIT"
+
 from typing import TYPE_CHECKING
 from typing import cast
 

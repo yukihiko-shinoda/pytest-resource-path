@@ -1,7 +1,7 @@
 # pytest-resource-path
 
 [![Test](https://github.com/yukihiko-shinoda/pytest-resource-path/workflows/Test/badge.svg)](https://github.com/yukihiko-shinoda/pytest-resource-path/actions?query=workflow%3ATest)
-[![CodeQL](https://github.com/yukihiko-shinoda/pytest-resource-path/workflows/CodeQL/badge.svg)](https://github.com/yukihiko-shinoda/pytest-resource-path/actions?query=workflow%3ACodeQL)
+[![CodeQL](https://github.com/yukihiko-shinoda/pytest-resource-path/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/yukihiko-shinoda/pytest-resource-path/actions/workflows/github-code-scanning/codeql)
 [![Code Coverage](https://qlty.sh/gh/yukihiko-shinoda/projects/pytest-resource-path/coverage.svg)](https://qlty.sh/gh/yukihiko-shinoda/projects/pytest-resource-path)
 [![Maintainability](https://qlty.sh/gh/yukihiko-shinoda/projects/pytest-resource-path/maintainability.svg)](https://qlty.sh/gh/yukihiko-shinoda/projects/pytest-resource-path)
 [![Dependabot](https://flat.badgen.net/github/dependabot/yukihiko-shinoda/pytest-resource-path?icon=dependabot)](https://github.com/yukihiko-shinoda/pytest-resource-path/security/dependabot)
